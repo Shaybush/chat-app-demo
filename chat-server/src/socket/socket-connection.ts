@@ -11,9 +11,12 @@ export const createSocket = (server: Server) => {
 
     io.on('connection', (socket) => {
         console.log('Connected from client');
+
         socket.on('clientEvent', (msg) => {
             console.log(msg);
             io.sockets.emit('nodeEvent', `New message: ${msg}`);
         });
+
+        socket.on('disconnect', () => console.log('user disconnected'))
     });
 };
