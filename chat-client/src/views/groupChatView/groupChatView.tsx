@@ -5,7 +5,7 @@ const GroupChatView: FC = () => {
 	const socket = io('http://localhost:3001');
 
 	useEffect(() => {
-		socket.on('nodeEvent', (e) => console.log(e));
+		socket.on('message-broadcast', (e) => console.log(e));
 	}, []);
 
 	return (
@@ -14,7 +14,7 @@ const GroupChatView: FC = () => {
 				<div className='w-100 border border-3 rounded-2 border-dark mx-auto col-md-6 mt-3'>
 					<button
 						onClick={() => {
-							socket.emit('clientEvent', 'hello world');
+							socket.emit('send-message', 'hello world');
 						}}
 					>
 						Click me
