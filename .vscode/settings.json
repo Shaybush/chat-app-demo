@@ -16,5 +16,6 @@
   "css.lint.unknownAtRules": "ignore",
   "files.exclude": {
     "**/.git": false
-  }
+  },
+  "explorer.compactFolders": false,
 }

@@ -14,7 +14,7 @@ export const createSocket = (server: Server) => {
 
         socket.on('send-message', (msg) => {
             console.log(msg); // client message 
-            io.sockets.emit('message-broadcast', msg);
+            io.sockets.emit('message', msg);
         });
 
         socket.on('disconnect', () => console.log('user disconnected'))

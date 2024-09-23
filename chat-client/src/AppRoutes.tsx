@@ -3,7 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import LoaderSpinnerCircle from './shared/components/loaderSpinnerCircle';
 
 const AppRoutes = () => {
-	const GroupChatView = React.lazy(() => import('./views/groupChatView'));
+	const ChatView = React.lazy(() => import('./views/chatView'));
 
 	return (
 		<Suspense
@@ -15,7 +15,7 @@ const AppRoutes = () => {
 		>
 			<Router>
 				<Routes>
-					<Route path='/' element={<GroupChatView />} />
+					<Route path='/' element={<ChatView />} />
 				</Routes>
 			</Router>
 		</Suspense>

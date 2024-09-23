@@ -1,0 +1,25 @@
+.chatContainer {
+	display: grid;
+	grid-template-areas: 
+		"header"
+		"messages"
+		"input";
+	grid-template-rows: auto 75% auto; /* Header and input take auto height, messages take the remaining space */
+	height: 100vh; /* Full viewport height */
+}
+
+.chat-header {
+	grid-area: header;
+	padding: 10px;
+}
+
+.chatMessages {
+	grid-area: messages;
+	overflow-y: auto; /* Scrolling inside the messages area */
+	padding: 10px;
+}
+
+.chat-input {
+	grid-area: input;
+	padding: 10px;
+}
