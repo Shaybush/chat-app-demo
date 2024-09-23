@@ -3,6 +3,7 @@ import { createServer } from 'node:http';
 import path from 'path';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import { createSocket } from "./socket/socket-connection";
 
 const app = express();
 const server = createServer(app);
@@ -22,3 +23,5 @@ const PORT = 3001;
 server.listen(PORT, () => {
   console.log(`server is up on: http://localhost:${PORT}`);
 });
+
+createSocket(server)
