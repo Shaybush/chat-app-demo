@@ -15,7 +15,7 @@
     "useUnknownInCatchVariables": false /* Default catch clause variables as 'unknown' instead of 'any'. */,
     "paths": {
       /* paths lets you declare how TypeScript should resolve an import in your require/imports. */
-      "@/*": [/* @ allow us import main folder */ "./*"]
+      "@/*": [/* @ allow us import main folder */ "./src/*"] // TODO - improve 
     },
     "resolveJsonModule": true /* Enable importing .json files. */,
     "typeRoots": ["./src/@types", "./node_modules/@types"]
@@ -23,3 +23,4 @@
   "include": ["src/**/*.ts", "src/index.d.ts"],
   "exclude": ["node_modules"]
 }
+ 
