@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  server:
+    build:
+      context: ./chat-app-server
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    networks:
+      - appnetwork
+    depends_on:
+      - redis
+      - mongodb
+    environment:
+      EMAIL_USER: ${EMAIL_USER}
+      EMAIL_PASS: ${EMAIL_PASS}
+    env_file:
+      - ./chat-app-server/.env  # Specify the relative path to the .env file
+
+  client:
+    build:
+      context: ./chat-app-client
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    expose:
+      - "5173"
+    depends_on:
+      - server
+    networks:
+      - appnetwork
+  
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - appnetwork
+  
+  mongodb:
+    container_name: mongodb_with_volume
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - appnetwork
+
+networks:
+  appnetwork:
+    driver: bridge
+
+volumes:
+  mongo_data:
