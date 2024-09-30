@@ -22,7 +22,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.get('/', (req, res) => {
-  res.send("hello")
+  res.send("hello");
+  console.log("hello");
 })
 
 app.use('/auth', authRouter)
