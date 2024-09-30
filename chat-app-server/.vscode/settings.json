@@ -1,0 +1,21 @@
+{
+  "git.closeDiffOnOperation": true,
+  "javascript.preferences.importModuleSpecifier": "shortest", // default value is shortest
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "window.zoomLevel": 0,
+  "editor.mouseWheelZoom": false,
+  "editor.multiCursorModifier": "alt",
+  "css.lint.unknownProperties": "ignore",
+  "css.lint.unknownAtRules": "ignore",
+  "files.exclude": {
+    "**/.git": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.compactFolders": false,
+}

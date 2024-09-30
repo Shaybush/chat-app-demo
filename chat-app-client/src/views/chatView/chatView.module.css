@@ -1,0 +1,9 @@
+.chatContainer {
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "messages"
+    "input";
+    grid-template-rows: auto 75% auto;
+    height: 100vh;
+}
