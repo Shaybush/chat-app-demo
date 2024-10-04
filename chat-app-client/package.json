@@ -4,13 +4,10 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"start": "vite",
+		"start": "vite --host",
 		"build": "tsc && vite build",
 		"lint": "eslint src/**/*.{ts,tsx}",
 		"lint:fix": "eslint src/**/*.{ts,tsx} --fix",
-		"test": "jest --watchAll",
-		"test:ci": "jest --no-watch",
-		"coverage": "jest --coverage",
 		"full": "npm run lint && npm run coverage && npm run build",
 		"preview": "vite preview"
 	},
