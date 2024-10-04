@@ -12,9 +12,6 @@ services:
     depends_on:
       - redis
       - mongodb
-    environment:
-      EMAIL_USER: ${EMAIL_USER}
-      EMAIL_PASS: ${EMAIL_PASS}
     env_file:
       - ./chat-app-server/.env  # Specify the relative path to the .env file
 
