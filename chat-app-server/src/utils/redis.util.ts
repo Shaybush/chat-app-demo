@@ -10,7 +10,7 @@ interface IRedisCacheProps {
 }
 
 export const get_set_redis_cache = async ({ key, callbackFn, expirationTime }: IRedisCacheProps): Promise<void | RedisClientType> => {
-    const redisClient = await connectRedis()
+    const redisClient = await connectRedis();
     return new Promise((resolve, reject) => {
         redisClient.GET(key)
             .then((redisData: string) => {

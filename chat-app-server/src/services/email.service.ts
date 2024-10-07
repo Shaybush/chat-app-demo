@@ -9,18 +9,14 @@ export const send_digit_to_email = async (req: Request, res: Response, next: Nex
 	// TODO - add controller here 
 	const { email } = req.body;
 	const digits = create_email_code(DIGITS_LEN)
-	// TODO- check error handling
-	await Promise.allSettled([
-		emailService.sendEmail(generate_verification_email(email, digits)),
-		get_set_redis_cache({
+	try {
+		await get_set_redis_cache({
 			key: email,
 			expirationTime: generateTime({ value: 1, time: 'hour' }),
 			callbackFn: () => digits
-		})
-	]).then((result) => {
-		console.log('result:', result);
-		res.status(201).json({ message: 'Email sent successfully.' })
-	}).catch((err) => next(err))
-
-	console.log('hello');
+		})	
+		await  emailService.sendEmail(generate_verification_email(email, digits));
+	} catch (error) {
+		next(error);	
+	}
 }
