@@ -8,11 +8,10 @@ let redisClient: RedisClientType;
 const connectRedis = async (): Promise<RedisClientType> => {
     if (!redisClient) {
         config();
-        redisClient = createClient({
-            url: process.env.REDIS_URL || 'ss', // default server run on local
-        });
-
         try {
+        redisClient = createClient({
+            url: process.env.REDIS_URL || '', // default server run on local
+        });
             await redisClient.connect();
             console.log("Redis connected successfully");
         } catch (error) {

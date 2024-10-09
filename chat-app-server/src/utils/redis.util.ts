@@ -10,7 +10,7 @@ interface IRedisCacheProps {
 }
 
 export const get_set_redis_cache = async ({ key, callbackFn, expirationTime }: IRedisCacheProps): Promise<void | RedisClientType> => {
-    const redisClient = await connectRedis()
+    const redisClient = await connectRedis();
     return new Promise((resolve, reject) => {
         redisClient.GET(key)
             .then((redisData: string) => {
@@ -25,5 +25,18 @@ export const get_set_redis_cache = async ({ key, callbackFn, expirationTime }: I
                 `error getting redis data: ${error.message}`,
                 false
             )))
+    })
+}
+
+export const set_redis_cache = async ({ key, callbackFn, expirationTime }: IRedisCacheProps): Promise<void | RedisClientType> => {
+    const redisClient = await connectRedis();
+    return new Promise((resolve, reject) => {
+        const value = callbackFn();
+        redisClient.SETEX(key, expirationTime, JSON.stringify(value)).then(()=>resolve()).catch((error: { message: string }) => reject(new AppError(
+            CommonResponseDict.InternalServerError.title,
+            CommonResponseDict.InternalServerError.code,
+            `error getting redis data: ${error.message}`,
+            false
+        )));
     })
 }
