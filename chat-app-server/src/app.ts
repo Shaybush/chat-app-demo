@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import { createSocket } from "./socket/socket-connection";
 import authRouter from "./routes/auth.router";
 import { AppError } from './error/appError';
+import { AppConfig } from "./config/app.config";
 
 const app = express();
 const server = createServer(app);
@@ -25,16 +26,15 @@ app.get('/health', (req, res) => {
   res.send("OK");
 })
 
-app.use('/auth', authRouter)
+app.use(AppConfig.apiUrl.auth, authRouter)
 
 app.use((err: AppError, req: Request, res: Response, _next: NextFunction) => {
   console.error(`${req.method}:${req.originalUrl}, failed with error:${err}`);
   res.status(err.httpCode).json({ message: err.message, title: err.name, isOperational: err.isOperational })
 });
 
-const PORT = 3001;
-server.listen(PORT, () => {
-  console.log(`server is up on: http://localhost:${PORT}`);
+server.listen(AppConfig.port, () => {
+  console.log(`server is up on: http://localhost:${AppConfig.port}`);
 });
 
 createSocket(server)
