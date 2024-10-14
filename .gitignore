@@ -21,7 +21,6 @@ build/
 temp/
 tmp/
 
-.vscode/
 .idea/
 
 yarn-error.log
