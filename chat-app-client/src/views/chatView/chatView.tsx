@@ -9,6 +9,7 @@ const ChatView: FC = () => {
 	const [messages, setMessages] = useState<IMessageModel[]>([]);
 	const socket = io('http://localhost:3001');
 	useEffect(() => {
+		debugger;
 		socket.on('message', (message: string) => {
 			setMessages((prev) => [...prev, { message, key: crypto.randomUUID() }]);
 		});

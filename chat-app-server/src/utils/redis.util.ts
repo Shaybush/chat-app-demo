@@ -2,6 +2,7 @@ import { RedisClientType } from 'redis';
 import connectRedis from '../db/connect-redis';
 import { AppError } from '../error/appError';
 import CommonResponseDict from './common-response-dict.utils';
+
 interface IRedisCacheProps {
     key: string;
     callbackFn: () => void;

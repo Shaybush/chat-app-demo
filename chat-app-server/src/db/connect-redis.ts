@@ -12,7 +12,6 @@ const connectRedis = async (): Promise<RedisClientType> => {
         redisClient = createClient({
             url: process.env.REDIS_URL || '', // default server run on local
         });
-        console.log(process.env.REDIS_URL || '');
             await redisClient.connect();
             console.log("Redis connected successfully");
         } catch (error) {
